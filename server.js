@@ -33,43 +33,15 @@ app.use(express.json());
 // middleware to serve static files
 // so express will search files to server
 app.use(express.static(path.join(__dirname, '/public')));
+app.use('/subdir', express.static(path.join(__dirname, '/public')));
 
 
-app.get('^/$|index(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
-})
+app.use('/', require('./routes/root'));
 
-app.get('/new-page(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
-})
+// this will route any request for subdir into router/subdir
+app.use('/subdir', require('./routes/subdir'));
+app.use('/employees', require('./routes/api/employees'));
 
-app.get('/old-page(.html)?', (req, res) => {
-    res.redirect(301, '/new-page.html');  // 302 by default  // we put 301 explicitly so search engine know that link was moved permanently
-})
-
-app.get('/hello(.html)?', (req, res, next) => {
-    console.log('attempted to load hello.html');
-    next();
-}, (req, res) => {
-    res.send('Hello world!');
-});
-
-const one = (req, res, next) => {
-    console.log('one');
-    next();
-}
-
-const two = (req, res, next) => {
-    console.log('two');
-    next();
-}
-
-const three = (req, res) => {
-    console.log('three');
-    res.send('Finished');
-}
-
-app.get('/chain(.html)?', [one, two, three]);
 
 // everything that get in here should be 404
 app.all('*', (req, res) => {
