@@ -4,23 +4,13 @@ const path = require('path');
 const {logger} = require('./middleware/logEvents')
 const errorHandler = require('./middleware/errorHandler')
 const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
 const PORT = process.env.PORT || 3500;
 
 //custom middleware logger
 app.use(logger)
 
-// Cross Origin Resource Sharing
-const whitelist = ['https://www.google.com', 'http://127.0.0.1:5500', 'http://localhost:3500'];
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
-            callback(null, true)
-        } else{
-            callback(new Error('Not allowed by CORS'))
-        }
-    },
-    optionsSuccessStatus: 200
-}
+// cross-origin resource sharing
 app.use(cors(corsOptions))
 
 // build in middleware to handle urlencoded model
@@ -33,15 +23,10 @@ app.use(express.json());
 // middleware to serve static files
 // so express will search files to server
 app.use(express.static(path.join(__dirname, '/public')));
-app.use('/subdir', express.static(path.join(__dirname, '/public')));
 
-
+// routes
 app.use('/', require('./routes/root'));
-
-// this will route any request for subdir into router/subdir
-app.use('/subdir', require('./routes/subdir'));
 app.use('/employees', require('./routes/api/employees'));
-
 
 // everything that get in here should be 404
 app.all('*', (req, res) => {
