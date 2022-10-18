@@ -23,8 +23,8 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-// build in middleware to handle urlencoded data
-// in other words, form data: content-type: application/x-www-form-urlencoded
+// build in middleware to handle urlencoded model
+// in other words, form model: content-type: application/x-www-form-urlencoded
 app.use(express.urlencoded({extended: false}));
 
 // build in middleware for json
