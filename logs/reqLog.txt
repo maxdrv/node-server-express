@@ -3,3 +3,6 @@
 20221016	14:31:26	1d1697b5-88fb-426c-9e6a-e161e9b9e432	/new-page.html	GET
 20221016	14:31:26	5e335158-924d-45af-8546-d4e44d5e47e9	/css/style.css	GET
 20221016	14:31:26	ea52f4df-f3a4-40b7-818e-f82b6b3382d2	/img/img1.jpg	GET
+20221018	23:42:39	008f95c0-bd4d-4b36-aa49-d98e243d19da	POST	undefined	/register
+20221018	23:43:57	8bcec3ce-84bc-4aa0-ae5a-f588baae8d0b	POST	undefined	/register
+20221018	23:44:05	b9dab53d-51bf-4aa7-a645-e3aa687e2835	POST	undefined	/register
