@@ -5,6 +5,7 @@ const {logger} = require('./middleware/logEvents')
 const errorHandler = require('./middleware/errorHandler')
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
+const verifyJWT = require('./middleware/verifyJWT')
 const PORT = process.env.PORT || 3500;
 
 //custom middleware logger
@@ -28,6 +29,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
+// everything under that line will use jwt verification
+app.use(verifyJWT);
 app.use('/employees', require('./routes/api/employees'));
 
 // everything that get in here should be 404
