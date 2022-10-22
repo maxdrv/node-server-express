@@ -12,7 +12,7 @@
     "roles": {
       "User": 2001
     },
-    "password": "$2b$10$NbiO0eFxVHDr0970WOLwK.psDhfz.Zk4ax/Wcn/Uq8Q/sPrQEG0n.",
+    "password": "$2b$10$NbiO0eFxVHDr0970WOLwK.psDhfz.Zk4ax/Wcn/Uq8Q/sPrQEG0n."
   },
   {
     "username": "walt1",
@@ -21,6 +21,6 @@
       "Editor": 1984,
       "User": 2001
     },
-    "password": "$2b$10$jG3o70ERV56pUs6qj7T8ve9.bI4vJpDMykW/xGolq6f.lPtRRWB9a",
+    "password": "$2b$10$jG3o70ERV56pUs6qj7T8ve9.bI4vJpDMykW/xGolq6f.lPtRRWB9a"
   }
 ]
